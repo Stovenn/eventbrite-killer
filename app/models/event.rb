@@ -8,4 +8,5 @@ class Event < ApplicationRecord
     validates :title, length: { minimum: 5 }, length: {maximum: 140}
     validates :description, length: { minimum: 20 }, length: {maximum: 1000}
     validates :price, numericality: { less_than:1000 }, numericality: { more_than:1 }
+
 end

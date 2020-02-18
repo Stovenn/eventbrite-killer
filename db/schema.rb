@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_140608) do
     t.string "stripe_customer_id"
     t.bigint "user_id"
     t.bigint "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_attendances_on_event_id"
     t.index ["user_id"], name: "index_attendances_on_user_id"
   end
