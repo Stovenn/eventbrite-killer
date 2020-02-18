@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :home, only:[:index]
+  get '/', action: :index, controller: 'home'
 end
