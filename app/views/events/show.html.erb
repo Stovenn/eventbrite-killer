@@ -1,0 +1,15 @@
+    <div class="container marketing">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading"><%= @event.title %></h2>
+            <p class="lead"><%= @event.description %> </p>
+            <p class="lead">le <%= @event.start_date.strftime('%d-%m-%Y') %> a <%= @event.start_date.strftime('%H:%M') %> (<%= @event.duration %> min)</p>
+            <p class="lead"><span class="text-primary">Lieu: </span><%= @event.location %> </p>
+            <p class="lead"><span class="text-primary">Prix: </span><%= @event.price %>$</p>
+          </div>
+          <% if user_signed_in? %>
+            <p><button class="btn btn-primary" href="#"> Je m'inscris !</button></p>
+          <% end %>
+        </div>
+      </div><!-- /.container -->
