@@ -22,7 +22,7 @@
       
       <div class="field">
         <%= f.label :duration %><br>
-        <%= f.number_field :duration %>
+        <%= f.number_field :duration, min:0, step:5 %>
       </div>
       
       <div class="field">
@@ -32,9 +32,9 @@
 
       <div class="field">
         <%= f.label :price %><br>
-        <%= f.number_field :price %>
+        <%= f.number_field :price, min:1 %>
       </div>
-
+      
       <div class="actions">
         <%= f.submit "Create a new event", class:'btn btn-primary'%>
       </div>

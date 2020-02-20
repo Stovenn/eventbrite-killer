@@ -1,15 +1,29 @@
-    <div class="container marketing">
+<div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="card">
+              <%= image_tag "event-default.jpg", class:'img-fluid', style:"height:29rem;" %>
+              <h3 class="display-4 mt-2 text-center"><%= @event.title %></h3>
+              <div class="card-body text-white bg-dark text-center" style="height:15rem;">
+                <h5 class="card-title"><%= @event.location %></h5>
+                <p>le <%= @event.start_date.strftime('%d-%m-%Y') %> a <%= @event.start_date.strftime('%H:%M') %> (<%= @event.duration %> min)</p>
+                <p class="card-text"><%= @event.description %></p>
+                <p>Organisateur: <%= @event.admin.email %> </p>
+                <p>Nombre de participants: </p>
+                <p class="lead"><%= @event.price %>$</p>
+              </div>
+              <% if user_signed_in? && current_user != @event.admin %>
+                <p>
+                  <a class="btn btn-primary btn-lg btn-block" href="<%= new_event_attendance_path(@event) %>">Je m'inscris !</a>
+                </p>
+              <% end %>
+              <% if user_signed_in? && current_user == @event.admin %>
+                <p>
+                  <a class="btn btn-outline-primary btn-lg btn-block" href="<%= event_attendances_path(@event) %>">Liste des inscris</a>
+                </p>
+              <% end %>
 
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading"><%= @event.title %></h2>
-            <p class="lead"><%= @event.description %> </p>
-            <p class="lead">le <%= @event.start_date.strftime('%d-%m-%Y') %> a <%= @event.start_date.strftime('%H:%M') %> (<%= @event.duration %> min)</p>
-            <p class="lead"><span class="text-primary">Lieu: </span><%= @event.location %> </p>
-            <p class="lead"><span class="text-primary">Prix: </span><%= @event.price %>$</p>
-          </div>
-          <% if user_signed_in? %>
-            <p><button class="btn btn-primary" href="#"> Je m'inscris !</button></p>
-          <% end %>
+            </div>       
+          </div>     
         </div>
-      </div><!-- /.container -->
+</div>

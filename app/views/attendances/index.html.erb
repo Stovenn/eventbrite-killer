@@ -1,0 +1,6 @@
+<div class="container">
+  <h2 class="display-5 mb-4 font-weight-bold">Inscrits:</h2>
+    <% @list_of_users.each do |u| %>
+      <h4 class="card-subtitle mb-2 text-muted">- <%= u.email%></h4>
+    <% end %>
+</div>
