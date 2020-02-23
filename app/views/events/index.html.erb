@@ -18,7 +18,7 @@
             <h5 class="card-title font-weight-bold"><%= event.title %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= event.location %></h6>
             <p class="card-text"><%= truncate(event.description, length: 30) %></p>
-           
+            <p class="card-text"><small><%= raw event.tags.map(&:title).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
             <a href="<%= event_path(event.id)%>" class="card-link">Voir plus...</a>
           </div>
         </div>
