@@ -6,11 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-20.times do
+# 20.times do
 
-    u = User.new(description: Faker::ChuckNorris.fact, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
-    u.email = "#{u.first_name}.#{u.last_name}@yopmail.com"
-    u.save
-end
+#     u = User.new(description: Faker::ChuckNorris.fact, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name)
+#     u.email = "#{u.first_name}.#{u.last_name}@yopmail.com"
+#     u.save
+# end
 
 puts "Les donnees ont bien ete crees"
+
+Tag.create(title: "Recipe")
+Tag.create(title: "Travel")
+Tag.create(title: "Fashion/Beauty")
+Tag.create(title: "Humour")

@@ -3,16 +3,19 @@
 <div class="container">
 <!-- Example row of columns -->
   <h2>Nouvel evenement</h2>
-    <%= form_for @event do |f| %>
+    <%= simple_form_for @event, url: events_path do |f| %>
 
       <div class="field">
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
+        <%= f.input :title %>
       </div>
 
       <div class="field">
         <%= f.label :description %><br>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, cols:70 %>
+      </div>
+
+      <div class="field">
+        <%= f.input :tag_ids, as: :select, collection: Tag.order(:title), label_method: :title, input_html: {multiple: true} %>
       </div>
 
       <div class="field">
@@ -26,8 +29,7 @@
       </div>
       
       <div class="field">
-        <%= f.label :location %><br>
-        <%= f.text_field :location %>
+        <%= f.input :location %><br>
       </div>
 
       <div class="field">

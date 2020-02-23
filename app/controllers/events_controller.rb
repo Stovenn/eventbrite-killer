@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
     before_action :authenticate_user!, except: [:index]
     def index
-        @events = Event.all
+        params[:tag] ? @events = Event.tagged_with(params[:tag]) : @events = Event.all
     end
 
     def new
@@ -26,6 +26,6 @@ class EventsController < ApplicationController
     private
 
     def event_params
-        params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin_id)
+        params.require(:event).permit(:start_date, :duration, :title, :description, :price, :location, :admin_id, :tag, { tag_ids: [] }, :tag_ids)
     end
 end

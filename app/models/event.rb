@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
     has_many :attendances
     has_many :users, through: :attendances
+    has_many :event_tag_joins
+    has_many :tags, through: :event_tag_joins
     belongs_to :admin, class_name: "User"
     validates :start_date, :duration, :title, :description, :price, :location, presence: true
 
@@ -30,5 +32,15 @@ class Event < ApplicationRecord
         end
     end
 
+    def self.tagged_with(title)
+        Tag.find_by!(title: title).posts
+    end
 
+    def self.tag_counts
+        Tag.select('tags.*, count(event_tag_joins.tag_id) as count').joins(:event_tag_joins).group('event_tag_joins.tag_id')
+    end
+
+    def tag_list
+        tags.map(&:title).join(', ')
+      end
 end
