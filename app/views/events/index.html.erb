@@ -1,28 +1,4 @@
- <main role="main">
 
-  <div class="jumbotron text-center">
-    <div class="container">
-        <h1 class="display-4">Bienvenue sur Eventbrite 2.0</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    </div>
-  </div>
+<%= render  "home_banner" %>
+<%= render  "event_list" %>
 
-  <div class="container">
-    <h2 class="display-5 mb-4 font-weight-bold">Les events</h2>
-    <div class="row">
-      <% @events.each do |event| %>
-        <div class="col-md-4">
-        <div class="card mb-4 border border-secondary" style="width: 18rem;">
-          <div class="card-img-top"><%= image_tag "event-default.jpg", class:'img-fluid' %></div>
-          <div class="card-body">
-            <h5 class="card-title font-weight-bold"><%= event.title %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= event.location %></h6>
-            <p class="card-text"><%= truncate(event.description, length: 30) %></p>
-            <p class="card-text"><small><%= raw event.tags.map(&:title).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
-            <a href="<%= event_path(event.id)%>" class="card-link">Voir plus...</a>
-          </div>
-        </div>
-        </div>
-      <% end %>
-  </div> <!-- /container -->
-</main>

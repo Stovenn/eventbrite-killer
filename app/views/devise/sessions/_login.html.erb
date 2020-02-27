@@ -1,0 +1,25 @@
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<form id="login">
+		<fieldset>
+			<legend class="mt-4 mb-4">Login</legend>
+			<div class="form-group">
+				<%= f.label :email, "Email address" %>
+				<%= f.email_field :email, type:"email", class:"form-control border border-secondary", id:"exampleInputEmail1", placeholder:"Enter email" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :password, "Password" %>
+				<%= f.password_field :password, type:"password", class:"form-control border border-secondary", id:"exampleInputPassword1", placeholder:"Password"%>
+			</div>
+      <% if devise_mapping.rememberable? %>
+        <div class="form-group pl-4">
+          <%= f.check_box :remember_me, class:"form-check-input", checked:""%>
+          <%= f.label :remember_me, class:"form-check-label" %>
+        </div>
+      <% end %>
+      <%= f.submit "Login", class:"btn btn-block btn-primary mt-2 mb-3"%>
+			<p>Don't have an account? <a href="<%=new_user_registration_path%>" class="text-info font-weight-bold">Sign up</a></p>
+		</fieldset>
+	</form>
+<% end %>

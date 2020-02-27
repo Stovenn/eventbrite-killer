@@ -1,0 +1,39 @@
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+<form id="sign_up">
+		<fieldset>
+			<legend class="mt-4 mb-4">Sign up</legend>
+			<div class="form-group">
+				<%= f.label :email, "Email address" %>
+				<%= f.email_field :email, type:"email", class:"form-control border border-secondary", id:"exampleInputEmail1", placeholder:"Enter email" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :password, "Password" %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+				<%= f.password_field :password, type:"password", class:"form-control border border-secondary", id:"exampleInputPassword1", placeholder:"Password"%>
+			</div>
+			<div class="form-group">
+				<%= f.label :password_confirmation, "Confirm password"%>
+				<%= f.password_field :password_confirmation, type:"password", class:"form-control border border-secondary", id:"exampleInputPassword1", placeholder:"Password", autocomplete: "new-password"%>
+			</div>
+      <%= f.submit "Sign up", class:"btn btn-block btn-primary mt-2 mb-3"%>
+			<p>Already registered? <a href="<%=new_user_session_path%>" class="text-info font-weight-bold">Login</a></p>
+		</fieldset>
+	</form>
+<% end %>
+  
+	<%# <form id="password_reset">
+		<fieldset>
+			<legend>Password reset</legend>
+			<p>Please enter your mail address, we will send you a link to reset your password</p>
+			<div class="form-group">
+				<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+			</div>
+			<button type="submit" class="btn btn-warning">Reset my password</button>
+		</fieldset>
+	</form>
+</body>
+</html> %>

@@ -1,0 +1,17 @@
+<div class="container">
+<h2 class="mt-4">Les events</h2>
+<div class="row mt-4">
+  <% @events.each do |event| %>
+  <div class="col-md-3">
+    <div class="card text-white mb-3" style="max-width: 20rem;">
+      <div class="card-img-top"><%= image_tag "event-default.jpg", class:'img-fluid' %></div>
+      <div class="card-header bg-primary"><h4 class="card-title"><%= event.title %></h4>
+      <span class="badge badge-pill badge-info">Rap</span>
+        <span class="badge badge-pill badge-light">Concert</span></div>
+      <div class="card-body bg-dark">
+        <a href="<%= event_path(event.id)%>" class="text-info"> Voir plus...</a>
+      </div>
+  </div>
+  </div>
+  <% end %>
+  </div>
